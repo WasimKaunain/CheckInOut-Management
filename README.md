@@ -68,5 +68,5 @@ Contributions are welcome! Please follow these steps:
 This project is licensed under the MIT License.
 
 ## 📩 Contact
-For queries, contact wasimkonain@gmail.com(mailto:wasimkonain@gmail.com.com).
+For queries, contact wasimkonain@gmail.com
 
