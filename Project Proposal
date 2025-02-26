@@ -1,0 +1,55 @@
+CS432 Databases
+CheckInOut - Hostel Management System
+24210115@iitgn.ac.in, 24210105@iitgn.ac.in,rutuja.swami@iitgn.ac.in,shahparth@iitgn.ac.in
+
+1) Introduction
+The CheckInOut Hostel Management System is designed to efficiently manage hostel accommodations for students. The system will facilitate student profile management, room mapping, and tracking of check-ins and check-outs. 
+By providing a structured database system, it will ensure smooth operations and accurate record-keeping, reducing manual errors and administrative workload.
+
+2) Objective
+• To automate the management of hostel check-ins and check-outs.
+• To provide real-time tracking of room occupancy.
+• To maintain detailed student records, including room assignments and stay history.
+• To enforce data integrity and prevent duplicate room allocations.
+• To generate reports for hostel administration regarding student movements and room utilization.
+
+3) Software Stack
+• Database: MySQL.
+• Backend: PHP, Flask (Python), Java
+• Frontend: HTML, CSS, JavaScript (React/Vue.js).
+• Tools: Visual Studio Code, MySQL Workbench.
+
+4) Functionalities
+● Student Profile Management: Store student details such as Name, Student ID, Contact Information, and Hostel ID.
+Maintain historical records of hostel stays.
+
+● Room Allocation & Mapping:
+• Assign rooms to students based on availability and predefined hostel rules.
+• Ensure that no student is assigned multiple rooms simultaneously.
+
+● Check-in/Check-out Tracking:
+• Record check-in and check-out times with timestamps.
+• Maintain logs of student movements within and outside the hostel.
+• Prevent unauthorized check-ins and check-outs.
+
+● Room Monitoring:
+• Track the status of each room (occupied/vacant).
+• Prevent deletion or reassignment of occupied rooms.
+
+● Reporting & Logs:
+• Generate reports on student occupancy, room availability, and stay history.
+• Provide insights for hostel administration on student trends and capacity planning.
+
+5) Tables
+5.1 Students
+Holds information about students residing in the hostel. 
+CREATE TABLE Students ( Student_ID INT PRIMARY KEY AUTO_INCREMENT, Name VARCHAR(100) NOT NULL, Room_Number VARCHAR(10) NOT NULL, Contact_Info VARCHAR(15) NOT NULL,
+Entry_Status ENUM('Checked-In', 'Checked-Out') NOT NULL DEFAULT 'Checked-In' );
+
+5.2 Rooms
+Stores details of available hostel rooms. 
+CREATE TABLE Rooms ( Room_ID INT PRIMARY KEY AUTO_INCREMENT, Room_Number VARCHAR(10) UNIQUE NOT NULL, Capacity INT NOT NULL, Occupied INT DEFAULT 0 );
+
+5.3 CheckInOut_Log
+Manages student check-in and check-out records. 
+CREATE TABLE CheckInOut_Log ( Log_ID INT PRIMARY KEY AUTO_INCREMENT, Student_ID INT NOT NULL, CheckIn_Time DATETIME DEFAULT CURRENT_TIMESTAMP, CheckOut_Time DATETIME, FOREIGN KEY (Student_ID) REFERENCES Students(Student_ID) ON DELETE CASCADE );
